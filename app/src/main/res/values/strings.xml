@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_trangChu">Trang Chủ</string>
+    <string name="menu_sanPham">Sản Phẩm</string>
+    <string name="menu_gioiThieu">Giới Thiệu</string>
+    <string name="menu_duAn">Dự Án</string>
+    <string name="menu_tinTuc">Tin Tức</string>
+    <string name="menu_khuyenMai">Khuyến Mãi</string>
+    <string name="menu_lienHe">Liên Hệ</string>
+    <string name="menu_tuyenDung">Tuyển Dụng</string>
+    <string name="menu_PTthanhToan">PT Thanh Toán</string>
+
+    <string name="home_second">Home Second</string>
+
+    <string name="TiengViet">Tiếng Việt</string>
+    <string name="TiengAnh">Tiếng Anh</string>
+    <string name="SPBanChayNhat">SẢN PHẨM BÁN CHẠY NHẤT</string>
+    <string name="SPMayDienGiai">MÁY ĐIỆN GIẢI ION KIỀM</string>
+    <string name="HeThongLocNuoc">HỆ THỐNG LỌC NƯỚC</string>
+    <string name="MayLocNuoc">MÁY LỌC NUÓC</string>
+    <string name="LinhKienMayLocNuoc">LINH KIỆN MÁY LỌC NUÓC</string>
+
+
+    <string name="Text_title_footer">VĂN MINH WATER - SỨC KHỎE LÀ VÔ GIÁ</string>
+    <string name="Text_title_COMPANY">CÔNG TY TNHH CÔNG NGHỆ MÔI TRƯỜNG VINASOFT VIỆT NAM</string>
+    <string name="Text_title_MaSo">Mã số kinh doanh : 0108368141</string>
+    <string name="Text_title_SoKeHoach">Sở Kế hoạch &amp; Đầu tư Hà Nội cấp 18/07/2018</string>
+    <string name="Text_title_Gmali">xuanminh.eco@gmail.com</string>
+    <string name="Text_title_Address">VPGD : Số 26 BT4-1 Khu đô thị Trung Văn Từ Liêm Hà Nội</string>
+    <string name="Text_title_PhoneNumber">Điện thoại :0399228899 </string>
+    <string name="Text_title_LienHe">LIÊN HỆ VỚI CHÚNG TÔI</string>
+
+
+
+</resources>
