@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/custom_list_SPBanChay"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -29,7 +30,7 @@
 
                     <TextView
                         android:layout_marginLeft="@dimen/_2sdp"
-                        android:textSize="@dimen/_8sdp"
+                        android:textSize="@dimen/_6sdp"
                         android:fontFamily="sans-serif-condensed-medium"
                         android:textColor="#0C0C0C"
                         android:id="@+id/tv_name_spBanChay"
@@ -37,8 +38,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/image_spBanChay" />
                     <TextView
+
                         android:layout_marginLeft="@dimen/_2sdp"
-                        android:textSize="@dimen/_8sdp"
+                        android:textSize="@dimen/_6sdp"
                         android:textColor="#D50101"
                         android:id="@+id/tv_price_spBanChay"
                         android:layout_width="wrap_content"

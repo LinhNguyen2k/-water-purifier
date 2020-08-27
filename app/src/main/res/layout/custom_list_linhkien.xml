@@ -29,7 +29,7 @@
 
                 <TextView
                     android:layout_marginLeft="@dimen/_2sdp"
-                    android:textSize="@dimen/_8sdp"
+                    android:textSize="@dimen/_6sdp"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:textColor="#0C0C0C"
                     android:id="@+id/tv_name_LinhKien"
@@ -38,7 +38,7 @@
                     android:layout_below="@+id/image_LinhKien" />
                 <TextView
                     android:layout_marginLeft="@dimen/_2sdp"
-                    android:textSize="@dimen/_8sdp"
+                    android:textSize="@dimen/_6sdp"
                     android:textColor="#D50101"
                     android:id="@+id/tv_price_LinhKien"
                     android:layout_width="wrap_content"
