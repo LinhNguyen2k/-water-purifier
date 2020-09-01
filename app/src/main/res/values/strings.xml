@@ -37,6 +37,11 @@
     <string name="Text_title_PhoneNumber">Điện thoại :0399228899 </string>
     <string name="Text_title_LienHe">LIÊN HỆ VỚI CHÚNG TÔI</string>
 
+    <string name="Text_add_cart">Thêm Vào Giỏ</string>
+    <string name="Text_dathangnhanh">Đặt Hàng Nhanh</string>
+
+
+
 
 
 </resources>

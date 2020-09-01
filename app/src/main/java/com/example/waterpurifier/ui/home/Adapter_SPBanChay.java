@@ -23,8 +23,8 @@ import java.util.List;
 public class Adapter_SPBanChay extends RecyclerView.Adapter<Adapter_SPBanChay.Viewhoder> {
 
     List<Contact_SPBanChay> contact_spBanChays;
-private Context context;
-IonClickWaterPurifier ionClickWaterPurifier;
+    private Context context;
+    IonClickWaterPurifier ionClickWaterPurifier;
 
     public void setIonClickWaterPurifier(IonClickWaterPurifier ionClickWaterPurifier) {
         this.ionClickWaterPurifier = ionClickWaterPurifier;
@@ -49,15 +49,17 @@ IonClickWaterPurifier ionClickWaterPurifier;
     public void onBindViewHolder(@NonNull Adapter_SPBanChay.Viewhoder holder, int position) {
         final Contact_SPBanChay contact = contact_spBanChays.get(position);
         Picasso.with(context).load(contact.getImage()).into(holder.image_spBanChay);
-       holder.tvone.setText(String.valueOf(contact.getName_product()));
-     //  holder.tvone.setPaintFlags(holder.tvone.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-       holder.tvtwo.setText(String.valueOf(contact.getPrice()));
-       holder.layout.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-             ionClickWaterPurifier.onClickItem(contact);
-           }
-       });
+        holder.tvone.setText(String.valueOf(contact.getName_product()));
+        //  holder.tvone.setPaintFlags(holder.tvone.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        holder.tvtwo.setText(String.valueOf(contact.getNew_price()));
+        holder.tvthree.setText(String.valueOf(contact.getOld_price()));
+        holder.tvthree.setPaintFlags(holder.tvthree.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ionClickWaterPurifier.onClickItem(contact);
+            }
+        });
     }
 
     @Override
@@ -65,17 +67,19 @@ IonClickWaterPurifier ionClickWaterPurifier;
         return contact_spBanChays.size();
     }
 
-    public class Viewhoder extends RecyclerView.ViewHolder {
+    public static class Viewhoder extends RecyclerView.ViewHolder {
         ImageView image_spBanChay;
-        TextView tvone, tvtwo;
+        TextView tvone, tvtwo,tvthree;
         LinearLayout layout;
 
         public Viewhoder(@NonNull View itemView) {
             super(itemView);
             tvone = itemView.findViewById(R.id.tv_name_spBanChay);
             tvtwo = itemView.findViewById(R.id.tv_price_spBanChay);
+            tvthree = itemView.findViewById(R.id.tv_old_price_spBanChay);
             image_spBanChay = itemView.findViewById(R.id.image_spBanChay);
             layout= itemView.findViewById(R.id.custom_list_SPBanChay);
+
 
         }
     }

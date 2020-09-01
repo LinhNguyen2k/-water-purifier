@@ -44,6 +44,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
     FragmentHomeBinding binding;
+
     Adapter_SPBanChay adapter_spBanChay;
     List<Contact_MayDienGiai> contact_mayDienGiais;
     List<Contact_SPBanChay> contact_spBanChays;
@@ -200,17 +201,20 @@ public class HomeFragment extends Fragment {
     private void DoGetData_SpBanChay() {
 
         contact_spBanChays = new ArrayList<>();
-        String name, price, image;
+        String name, new_price, image,old_price,content,status;
 
         try {
             JSONArray jsonArray = new JSONArray(result1);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
                 name = object.getString("publisher_id");
-                price = object.getString("id");
+                new_price = object.getString("id");
                 image = object.getString("thumb");
+                old_price = object.getString("old_price");
+                content = object.getString("content");
+                status = object.getString("status");
+                contact_spBanChays.add(new Contact_SPBanChay(new_price,old_price,content,image,name,status));
 
-                contact_spBanChays.add(new Contact_SPBanChay(price, image, name));
             }
 
         } catch (JSONException e) {
