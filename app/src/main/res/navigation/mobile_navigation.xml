@@ -62,9 +62,9 @@
         tools:layout="@layout/fragment_promotion" />
     <fragment
         android:id="@+id/nav_recruitment"
-        android:name="com.example.waterpurifier.ui.recruiment.RecruimentFragment"
+        android:name="com.example.waterpurifier.ui.car.CarFragment"
         android:label="@string/menu_khuyenMai"
-        tools:layout="@layout/fragment_recruiment" />
+        tools:layout="@layout/fragment_car" />
     <fragment
         android:id="@+id/nav_pay"
         android:name="com.example.waterpurifier.ui.payment.PaymentFragment"

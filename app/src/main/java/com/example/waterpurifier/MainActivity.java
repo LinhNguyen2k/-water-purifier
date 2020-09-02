@@ -2,9 +2,13 @@ package com.example.waterpurifier;
 
 import android.content.ClipData;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.Menu;
+import android.widget.EditText;
 
+import com.example.waterpurifier.ui.home.Contact_SPBanChay;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -16,6 +20,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +41,31 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        EditText search = findViewById(R.id.searchView);
+
+//        search.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                ArrayList<Contact_SPBanChay> newlist = new ArrayList<>();
+//                for(int i=0;i<.size();i++){
+//                    if(messages.get(i).name.toLowerCase().contains(s.toString().toLowerCase())){
+//                        newlist.add(messages.get(i));
+//                    }
+//                }
+//                ChatAdapter chatAdapter = new ChatAdapter(MainActivity.this, R.layout.messenger, newlist);
+//                listView.setAdapter(chatAdapter);
+//            }
+//        });
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);

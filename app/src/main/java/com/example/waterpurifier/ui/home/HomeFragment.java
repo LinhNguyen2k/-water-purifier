@@ -201,7 +201,8 @@ public class HomeFragment extends Fragment {
     private void DoGetData_SpBanChay() {
 
         contact_spBanChays = new ArrayList<>();
-        String name, new_price, image,old_price,content,status;
+        String name, image,old_price,content,status,new_price;
+
 
         try {
             JSONArray jsonArray = new JSONArray(result1);
@@ -228,7 +229,7 @@ public class HomeFragment extends Fragment {
         adapter_spBanChay.setIonClickWaterPurifier(new IonClickWaterPurifier() {
             @Override
             public void onClickItem(Contact_SPBanChay contact_spBanChay) {
-                Fragment fragment = ItemSPBanChay.newInstance(contact_spBanChay);
+                Fragment fragment = ItemSPBanChay.newInstance(contact_spBanChay,contact_spBanChays);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
@@ -236,6 +237,8 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
+
 
     }
     private void DoGetData_LinhKien() {

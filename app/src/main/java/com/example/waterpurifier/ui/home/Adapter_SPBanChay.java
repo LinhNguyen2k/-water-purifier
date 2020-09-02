@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.waterpurifier.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter_SPBanChay extends RecyclerView.Adapter<Adapter_SPBanChay.Viewhoder> {
@@ -66,6 +67,8 @@ public class Adapter_SPBanChay extends RecyclerView.Adapter<Adapter_SPBanChay.Vi
     public int getItemCount() {
         return contact_spBanChays.size();
     }
+
+
 
     public static class Viewhoder extends RecyclerView.ViewHolder {
         ImageView image_spBanChay;

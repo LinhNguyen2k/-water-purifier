@@ -1,4 +1,4 @@
-package com.example.waterpurifier.ui.recruiment;
+package com.example.waterpurifier.ui.car;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

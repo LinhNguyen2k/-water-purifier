@@ -16,6 +16,7 @@ public class SQL_Helper extends SQLiteOpenHelper {
 
     static final String DB_NAME = "Water_Purifier.db";
     static final String DB_TABLE = "ConTact_list_car";
+    static final String DB_TABLE_MORE = "Add_product_more";
     static final int DB_VERSION = 1;
     SQLiteDatabase sqLiteDatabase;
     ContentValues contentValues;
@@ -65,7 +66,7 @@ public class SQL_Helper extends SQLiteOpenHelper {
     }
 
 
-    public List<Contact_SPBanChay> GetallPhoneNumber()
+    public List<Contact_SPBanChay> getallProduct()
     {
         List<Contact_SPBanChay> contacts = new ArrayList<>();
         sqLiteDatabase = getWritableDatabase();

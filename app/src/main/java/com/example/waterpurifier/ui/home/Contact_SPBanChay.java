@@ -1,5 +1,4 @@
 package com.example.waterpurifier.ui.home;
-import android.os.AsyncTask;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -21,6 +20,7 @@ public class Contact_SPBanChay implements Parcelable, Serializable{
         this.name_product = name_product;
         this.status = status;
     }
+
 
     public String getNew_price() {
         return new_price;
