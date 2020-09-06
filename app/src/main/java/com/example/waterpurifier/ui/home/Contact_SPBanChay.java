@@ -5,14 +5,14 @@ import android.os.Parcelable;
 import java.io.Serializable;
 
 public class Contact_SPBanChay implements Parcelable, Serializable{
-    private String new_price;
+    private int new_price;
     private String old_price;
     private String content;
     private String image;
     private String name_product;
     private String status;
 
-    public Contact_SPBanChay(String new_price, String old_price, String content, String image, String name_product, String status) {
+    public Contact_SPBanChay(int new_price, String old_price, String content, String image, String name_product, String status) {
         this.new_price = new_price;
         this.old_price = old_price;
         this.content = content;
@@ -22,11 +22,11 @@ public class Contact_SPBanChay implements Parcelable, Serializable{
     }
 
 
-    public String getNew_price() {
+    public int getNew_price() {
         return new_price;
     }
 
-    public void setNew_price(String new_price) {
+    public void setNew_price(int new_price) {
         this.new_price = new_price;
     }
 
@@ -88,7 +88,7 @@ public class Contact_SPBanChay implements Parcelable, Serializable{
 
     protected Contact_SPBanChay(Parcel in) {
         old_price = in.readString();
-        new_price = in.readString();
+        new_price = in.readInt();
         image = in.readString();
         name_product = in.readString();
         content = in.readString();
@@ -105,7 +105,7 @@ public class Contact_SPBanChay implements Parcelable, Serializable{
         dest.writeString(name_product);
         dest.writeString(image);
         dest.writeString(old_price);
-        dest.writeString(new_price);
+        dest.writeInt(new_price);
         dest.writeString(content);
         dest.writeString(status);
     }

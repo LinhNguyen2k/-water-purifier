@@ -8,8 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class SQL_Helper extends SQLiteOpenHelper {
     private static final String TAG = "SQL_Helper";
@@ -50,7 +52,7 @@ public class SQL_Helper extends SQLiteOpenHelper {
     }
 
 
-    public  void insertPhone( Contact_SPBanChay contact)
+    public  void insertCart( Contact_SPBanChay contact)
     {
         sqLiteDatabase = getWritableDatabase();
         contentValues = new ContentValues();
@@ -65,7 +67,15 @@ public class SQL_Helper extends SQLiteOpenHelper {
 
     }
 
-
+    public boolean deleteAllProtect() {
+        sqLiteDatabase = getWritableDatabase();
+        return sqLiteDatabase.delete( DB_TABLE, null, null )>0;
+    }
+    public boolean deleteFoods(String id) {
+        sqLiteDatabase = getWritableDatabase();
+        return sqLiteDatabase.delete( DB_TABLE, "id =? ",
+                new String[]{String.valueOf( id )} ) > 0;
+    }
     public List<Contact_SPBanChay> getallProduct()
     {
         List<Contact_SPBanChay> contacts = new ArrayList<>();
@@ -82,7 +92,10 @@ public class SQL_Helper extends SQLiteOpenHelper {
 
         while (cursor.moveToNext()){
             String name = cursor.getString(cursor.getColumnIndex("name"));
-            String  new_price =(cursor.getString(cursor.getColumnIndex("new_price")));
+//            Locale local =new Locale("vi","VN");
+//            NumberFormat numberFormat = NumberFormat.getInstance(local);
+
+            int  new_price =(cursor.getInt(cursor.getColumnIndex("new_price")));
             String image = (cursor.getString(cursor.getColumnIndex("image")));
             String status = (cursor.getString(cursor.getColumnIndex("status")));
             String content = (cursor.getString(cursor.getColumnIndex("content")));
@@ -91,4 +104,6 @@ public class SQL_Helper extends SQLiteOpenHelper {
         }
         return contacts;
     }
+
+
 }

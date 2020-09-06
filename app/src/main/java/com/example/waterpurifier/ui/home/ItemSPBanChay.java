@@ -26,8 +26,10 @@ import com.example.waterpurifier.databinding.FragmentItemSpbanchayBinding;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ItemSPBanChay extends Fragment {
     FragmentItemSpbanchayBinding binding;
@@ -57,7 +59,13 @@ public class ItemSPBanChay extends Fragment {
         Picasso.with(getContext()).load(contact_spBanChay.getImage()).into(binding.igItemSpbanchay);
         binding.tvItemTitle.setText(contact_spBanChay.getName_product());
         binding.tvItemOldPrice.setText(contact_spBanChay.getOld_price());
-        binding.tvItemNewPrice.setText(contact_spBanChay.getNew_price());
+
+        Locale local =new Locale("vi","VN");
+        NumberFormat numberFormat = NumberFormat.getInstance(local);
+        String money = numberFormat.format(contact_spBanChay.getNew_price());
+        binding.tvItemNewPrice.setText(money+"VNĐ");
+
+//        binding.tvItemNewPrice.setText(contact_spBanChay.getNew_price());
         binding.tvItemStatus.setText(contact_spBanChay.getStatus());
 //        binding.tvItemStatus.setTextColor(Color.parseColor("#0080FF"));
 //        binding.tvItemStatus.setText("Tình Trạng :"+contact_spBanChay.getStatus());
@@ -82,7 +90,7 @@ public class ItemSPBanChay extends Fragment {
             public void onClick(View v) {
                 SQL_Helper sql_helper;
                 sql_helper = new SQL_Helper(getContext());
-                sql_helper.insertPhone(new Contact_SPBanChay(contact_spBanChay.getNew_price(), contact_spBanChay.getOld_price(), contact_spBanChay.getContent(), contact_spBanChay.getImage(), contact_spBanChay.getName_product(), contact_spBanChay.getStatus()));
+                sql_helper.insertCart(new Contact_SPBanChay(contact_spBanChay.getNew_price(), contact_spBanChay.getOld_price(), contact_spBanChay.getContent(), contact_spBanChay.getImage(), contact_spBanChay.getName_product(), contact_spBanChay.getStatus()));
                 Toast.makeText(getContext(), "add thành công", Toast.LENGTH_LONG).show();
             }
         });

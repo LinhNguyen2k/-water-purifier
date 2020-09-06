@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.waterpurifier.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class Adapter_custom_car extends RecyclerView.Adapter<Adapter_custom_car.Viewhoder> {
 
@@ -43,7 +45,10 @@ public class Adapter_custom_car extends RecyclerView.Adapter<Adapter_custom_car.
         final Contact_SPBanChay contact = contact_spBanChays.get(position);
         Picasso.with(context).load(contact.getImage()).into(holder.image_spBanChay);
         holder.tvone.setText(String.valueOf(contact.getName_product()));
-        holder.tvtwo.setText(String.valueOf(contact.getNew_price()));
+        Locale local =new Locale("vi","VN");
+        NumberFormat numberFormat = NumberFormat.getInstance(local);
+        String money = numberFormat.format(contact.getNew_price());
+        holder.tvtwo.setText(String.valueOf(money)+ (" VNĐ"));
         holder.tvthree.setText(String.valueOf(" "+1));
 
     }

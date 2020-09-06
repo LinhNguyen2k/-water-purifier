@@ -201,7 +201,8 @@ public class HomeFragment extends Fragment {
     private void DoGetData_SpBanChay() {
 
         contact_spBanChays = new ArrayList<>();
-        String name, image,old_price,content,status,new_price;
+        String name, image,old_price,content,status;
+        int new_price;
 
 
         try {
@@ -209,7 +210,7 @@ public class HomeFragment extends Fragment {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
                 name = object.getString("publisher_id");
-                new_price = object.getString("id");
+                new_price = object.getInt("id");
                 image = object.getString("thumb");
                 old_price = object.getString("old_price");
                 content = object.getString("content");
