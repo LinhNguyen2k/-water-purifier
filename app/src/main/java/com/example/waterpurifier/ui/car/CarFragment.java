@@ -75,10 +75,12 @@ public class CarFragment extends Fragment {
         binding.btRefund.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                binding.sumPriceCar.setText("0 VNĐ");
                 boolean listcar = sql_helper.deleteAllProtect();
                  binding.RCListSpCar.setAdapter(null);
                  binding.RCListSpCar.setLayoutManager(null);
                 Toast.makeText(getContext(),"Xóa Thành Công",Toast.LENGTH_LONG).show();
+
             }
         });
 

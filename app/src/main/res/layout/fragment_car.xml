@@ -13,29 +13,40 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:layout_margin="@dimen/_3sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
                 android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="@dimen/_10sdp"
                 android:layout_weight="3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ảnh"/>
             <TextView
+                android:paddingLeft="@dimen/_10sdp"
                 android:gravity="center"
-                android:layout_weight="4"
+                android:textColor="#000000"
+                android:textSize="@dimen/_10sdp"
+                android:layout_weight="6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tên Sản Phẩm "/>
             <TextView
+                android:paddingLeft="@dimen/_2sdp"
                 android:gravity="center"
-                android:layout_weight="5"
+                android:textColor="#000000"
+                android:textSize="@dimen/_10sdp"
+                android:layout_weight="3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ǵiá (VND)"/>
+                android:text="Ǵiá (VNĐ)"/>
             <TextView
                 android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="@dimen/_10sdp"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +55,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RC_list_sp_car"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_300sdp"/>
+            android:layout_height="wrap_content"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

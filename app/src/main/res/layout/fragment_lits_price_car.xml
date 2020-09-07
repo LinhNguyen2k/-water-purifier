@@ -11,21 +11,33 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="@dimen/_10sdp"
                 android:layout_weight="3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                   android:text="Ảnh"/>
             <TextView
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="@dimen/_10sdp"
                 android:layout_weight="6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tên Sản Phẩm "/>
             <TextView
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="@dimen/_10sdp"
                 android:layout_weight="2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ǵiá (VNĐ)"/>
             <TextView
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="@dimen/_10sdp"
                 android:layout_weight="2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,21 +51,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:textColor="#000000"
+                android:textSize="@dimen/_10sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tổng Tiền:"/>
 
             <TextView
+                android:textColor="#000000"
+                android:textSize="@dimen/_10sdp"
                 android:id="@+id/sum_price_car"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true" />
         </RelativeLayout>
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Thanh Toán"
-            android:id="@+id/bt_Refund"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thanh Toán"
+        android:id="@+id/bt_Refund"/>
     </LinearLayout>
 
 </layout>
