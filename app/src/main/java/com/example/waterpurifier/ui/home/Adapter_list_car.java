@@ -8,17 +8,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.waterpurifier.R;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class Adapter_SPBanChay extends RecyclerView.Adapter<Adapter_SPBanChay.Viewhoder> {
+public class Adapter_list_car extends RecyclerView.Adapter<Adapter_list_car.Viewhoder> {
 
     List<Contact_SPBanChay> contact_spBanChays;
     private Context context;
@@ -28,30 +29,30 @@ public class Adapter_SPBanChay extends RecyclerView.Adapter<Adapter_SPBanChay.Vi
     public void seticonLongClick(IconLongClick iconLongClick) {
         this.iconLongClick = iconLongClick;
     }
+//
+//    public void setIonClickWaterPurifier(IonClickWaterPurifier ionClickWaterPurifier) {
+//        this.ionClickWaterPurifier = ionClickWaterPurifier;
+//    }
 
-    public void setIonClickWaterPurifier(IonClickWaterPurifier ionClickWaterPurifier) {
-        this.ionClickWaterPurifier = ionClickWaterPurifier;
-    }
-
-    public Adapter_SPBanChay(List<Contact_SPBanChay> contact_spBanChays, Context context) {
+    public Adapter_list_car(List<Contact_SPBanChay> contact_spBanChays, Context context) {
         this.contact_spBanChays = contact_spBanChays;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public Viewhoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Adapter_list_car.Viewhoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.custom_list_spbanchay, parent, false);
-        Viewhoder viewhoder = new Viewhoder(view);
+
+        Adapter_list_car.Viewhoder viewhoder = new Adapter_list_car.Viewhoder(view);
         return viewhoder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter_SPBanChay.Viewhoder holder, int position) {
+    public void onBindViewHolder(@NonNull Adapter_list_car.Viewhoder holder, int position) {
         final Contact_SPBanChay contact = contact_spBanChays.get(position);
         Picasso.with(context).load(contact.getImage()).into(holder.image_spBanChay);
-        // Picasso.with(context).load(contact.getImage()).fit().centerInside().into(holder.image_spBanChay);
         holder.tvone.setText(String.valueOf(contact.getName_product()));
         //  holder.tvone.setPaintFlags(holder.tvone.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
@@ -61,13 +62,18 @@ public class Adapter_SPBanChay extends RecyclerView.Adapter<Adapter_SPBanChay.Vi
         holder.tvtwo.setText(String.valueOf(money) + (" VNĐ"));
         holder.tvthree.setText(String.valueOf(contact.getOld_price()));
         holder.tvthree.setPaintFlags(holder.tvthree.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+//        holder.layout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ionClickWaterPurifier.onClickItem(contact);
+//            }
+//        });
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ionClickWaterPurifier.onClickItem(contact);
+                iconLongClick.onClickButton(contact);
             }
         });
-
     }
 
     @Override
@@ -91,11 +97,4 @@ public class Adapter_SPBanChay extends RecyclerView.Adapter<Adapter_SPBanChay.Vi
 
         }
     }
-
-    public void filterList(ArrayList<Contact_SPBanChay> filter)
-    {
-        contact_spBanChays = filter;
-        notifyDataSetChanged();
-    }
-
 }

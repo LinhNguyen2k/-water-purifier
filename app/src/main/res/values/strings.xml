@@ -12,9 +12,10 @@
     <string name="menu_gioiThieu">Giới Thiệu</string>
     <string name="menu_duAn">Dự Án</string>
     <string name="menu_tinTuc">Tin Tức</string>
-    <string name="menu_khuyenMai">Khuyến Mãi</string>
+    <string name="menu_khuyenMai">Giỏ Hàng</string>
     <string name="menu_lienHe">Liên Hệ</string>
     <string name="menu_tuyenDung">Tuyển Dụng</string>
+    <string name="menu_gioHang">Giỏ Hàng</string>
     <string name="menu_PTthanhToan">PT Thanh Toán</string>
 
     <string name="home_second">Home Second</string>
@@ -39,9 +40,15 @@
 
     <string name="Text_add_cart">Thêm Vào Giỏ</string>
     <string name="Text_dathangnhanh">Đặt Hàng Nhanh</string>
-
-
-
+    <string name="title_activity_regisstration">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 
 
 </resources>

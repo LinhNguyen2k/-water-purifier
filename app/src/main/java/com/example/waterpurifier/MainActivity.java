@@ -1,11 +1,14 @@
 package com.example.waterpurifier;
 
 import android.content.ClipData;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
 import com.example.waterpurifier.ui.home.Contact_SPBanChay;
@@ -13,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -22,11 +26,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+List<Contact_SPBanChay> contact_spBanChays;
     private AppBarConfiguration mAppBarConfiguration;
-
+    String[] searchName ={"Máy Lọc Nước Aquaphor Morion ","Máy Lọc Nước Aquaphor Crystal Ec","Panasonic TK AS 66","Kangen LeveLuk SD501","Aquaphor Morion DWM","Aquaphor Crystal Eco H","Panasonic TK AS45","Kangen LeveLuk SD501"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,39 +39,21 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        EditText search = findViewById(R.id.searchView);
-
-//        search.addTextChangedListener(new TextWatcher() {
+//        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
 //
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                ArrayList<Contact_SPBanChay> newlist = new ArrayList<>();
-//                for(int i=0;i<.size();i++){
-//                    if(messages.get(i).name.toLowerCase().contains(s.toString().toLowerCase())){
-//                        newlist.add(messages.get(i));
-//                    }
-//                }
-//                ChatAdapter chatAdapter = new ChatAdapter(MainActivity.this, R.layout.messenger, newlist);
-//                listView.setAdapter(chatAdapter);
 //            }
 //        });
-
+        contact_spBanChays = new ArrayList<>();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this,android.R.layout.simple_expandable_list_item_1,searchName);
+        //Getting the instance of AutoCompleteTextView
+       // AutoCompleteTextView actv= (AutoCompleteTextView)findViewById(R.id.searchView);
+      //  actv.setThreshold(1);//will start working from first character
+        //actv.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each

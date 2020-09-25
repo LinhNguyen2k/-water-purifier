@@ -1,7 +1,6 @@
 package com.example.waterpurifier.ui.home;
 
 import android.annotation.SuppressLint;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,17 +44,10 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
     FragmentHomeBinding binding;
-
     Adapter_SPBanChay adapter_spBanChay;
-    List<Contact_MayDienGiai> contact_mayDienGiais;
+
     List<Contact_SPBanChay> contact_spBanChays;
-    List<Contac_MayLocNuoc> contac_mayLocNuocs;
-    List<Coctac_LinhKien> coctac_linhKiens;
-    List<Contact_HeThongLocNuoc> contact_heThongLocNuocs;
-    Adater_MayDienGiai adater_mayDienGiai;
-    Adapter_HeThongLocNuoc adapter_heThongLocNuoc;
-    Adapter_MayLocNuoc adapter_mayLocNuoc;
-    Adapter_LinhKienMayLocNuoc adapter_linhKienMayLocNuoc;
+
     String result1 = "";
     String urlAPI = "https://demo8117695.mockable.io/list_SanPhamBanChayNhat";
     String urlAPI_MayDG = "https://demo8117695.mockable.io/list_MayDienGiai";
@@ -62,12 +55,22 @@ public class HomeFragment extends Fragment {
     String urlAPI_MayLocNuoc = "https://demo8117695.mockable.io/list_MayLocNuoc";
     String urlAPI_LinhKien = "https://demo8117695.mockable.io/list_LinhKienMayLocNuoc";
 
+    public static HomeFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        HomeFragment fragment = new HomeFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false);
+        
         setlayout();
-
+         
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.GET, urlAPI_MayDG, new Response.Listener<String>() {
             @Override
@@ -141,22 +144,21 @@ public class HomeFragment extends Fragment {
         requestQueue4.add(stringRequest4);
         requestQueue1.add(stringRequest1);
         requestQueue.add(stringRequest);
-
+      
         return binding.getRoot();
     }
 
     private void setlayout() {
         ArrayList<String> slide = new ArrayList<>();
-        slide.add("http://locnuocvanminh.vn/img/Slide/jbz5kc6y7q.jpeg");
-        slide.add("http://locnuocvanminh.vn/img/Slide/jdciz8dq2e.jpeg");
-        slide.add("http://locnuocvanminh.vn/img/Slide/jbz5kc6y7q.jpeg");
-        slide.add("http://locnuocvanminh.vn/img/Slide/jdciz8dq2e.jpeg");
-        slide.add("http://locnuocvanminh.vn/img/Slide/jbz5kc6y7q.jpeg");
+        slide.add("https://i.imgur.com/2pKMat0.jpg");
+        slide.add("https://i.imgur.com/NZMXeby.jpg");
+        slide.add("https://i.imgur.com/2pKMat0.jpg");
+        slide.add("https://i.imgur.com/NZMXeby.jpg");
+        slide.add("https://i.imgur.com/2pKMat0.jpg");
 
         for (int i = 0; i < slide.size(); i++) {
             ImageView imageView = new ImageView(getContext());
             Picasso.with(getContext()).load(slide.get(i)).into(imageView);
-            //cho image tu can full
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             binding.Viewflipper.addView(imageView);
         }
@@ -164,36 +166,52 @@ public class HomeFragment extends Fragment {
         binding.Viewflipper.setFlipInterval(4000);
         binding.Viewflipper.setAutoStart(true);
         //goi Animation de anh chay tu tu
-        @SuppressLint("ResourceType") Animation animation_slide_in = AnimationUtils.loadAnimation(getContext(), R.transition.slide_in_right);
-        @SuppressLint("ResourceType") Animation animation_slide_out = AnimationUtils.loadAnimation(getContext(), R.transition.slide_out_right);
+         @SuppressLint("ResourceType") Animation animation_slide_in = AnimationUtils.loadAnimation(getContext(), R.transition.slide_in_right);
+         @SuppressLint("ResourceType") Animation animation_slide_out = AnimationUtils.loadAnimation(getContext(), R.transition.slide_out_right);
         binding.Viewflipper.setInAnimation(animation_slide_in);
         binding.Viewflipper.setOutAnimation(animation_slide_out);
-
     }
 
     private void DoGetData_MayDG() {
 
-        contact_mayDienGiais = new ArrayList<>();
-        String name, price, image;
 
+        contact_spBanChays = new ArrayList<>();
+        String name, image,old_price,content,status;
+        int new_price;
         try {
             JSONArray jsonArray = new JSONArray(result1);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
                 name = object.getString("publisher_id");
-                price = object.getString("id");
+                new_price = object.getInt("id");
                 image = object.getString("thumb");
-
-                contact_mayDienGiais.add(new Contact_MayDienGiai(price, image, name));
+                old_price = object.getString("old_price");
+                content = object.getString("content");
+                status = object.getString("status");
+                contact_spBanChays.add(new Contact_SPBanChay(new_price,old_price,content,image,name,status));
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1, RecyclerView.HORIZONTAL, false);
-        adater_mayDienGiai = new Adater_MayDienGiai(contact_mayDienGiais, getContext());
+        adapter_spBanChay = new Adapter_SPBanChay(contact_spBanChays, getContext());
         binding.RcSPDienGiai.setLayoutManager(layoutManager);
-        binding.RcSPDienGiai.setAdapter(adater_mayDienGiai);
+        binding.RcSPDienGiai.setAdapter(adapter_spBanChay);
+
+        adapter_spBanChay.setIonClickWaterPurifier(new IonClickWaterPurifier() {
+            @Override
+            public void onClickItem(Contact_SPBanChay contact_spBanChay) {
+                Fragment fragment = ItemSPBanChay.newInstance(contact_spBanChay,contact_spBanChays);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+
 
 
     }
@@ -244,76 +262,137 @@ public class HomeFragment extends Fragment {
     }
     private void DoGetData_LinhKien() {
 
-        coctac_linhKiens = new ArrayList<>();
-        String name, price, image;
+
+        contact_spBanChays = new ArrayList<>();
+        String name, image,old_price,content,status;
+        int new_price;
+
 
         try {
             JSONArray jsonArray = new JSONArray(result1);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
                 name = object.getString("publisher_id");
-                price = object.getString("id");
+                new_price = object.getInt("id");
                 image = object.getString("thumb");
+                old_price = object.getString("old_price");
+                content = object.getString("content");
+                status = object.getString("status");
+                contact_spBanChays.add(new Contact_SPBanChay(new_price,old_price,content,image,name,status));
 
-                coctac_linhKiens.add(new Coctac_LinhKien(price, image, name));
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1, RecyclerView.HORIZONTAL, false);
-        adapter_linhKienMayLocNuoc = new Adapter_LinhKienMayLocNuoc(coctac_linhKiens, getContext());
+        adapter_spBanChay = new Adapter_SPBanChay(contact_spBanChays, getContext());
         binding.RcLinhKien.setLayoutManager(layoutManager);
-        binding.RcLinhKien.setAdapter(adapter_linhKienMayLocNuoc);
+        binding.RcLinhKien.setAdapter(adapter_spBanChay);
+
+        adapter_spBanChay.setIonClickWaterPurifier(new IonClickWaterPurifier() {
+            @Override
+            public void onClickItem(Contact_SPBanChay contact_spBanChay) {
+                Fragment fragment = ItemSPBanChay.newInstance(contact_spBanChay,contact_spBanChays);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+
+
     }
     private void DoGetData_HeThongLocNuoc() {
 
-        contact_heThongLocNuocs = new ArrayList<>();
-        String name, price, image;
+
+        contact_spBanChays = new ArrayList<>();
+        String name, image,old_price,content,status;
+        int new_price;
+
 
         try {
             JSONArray jsonArray = new JSONArray(result1);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
                 name = object.getString("publisher_id");
-                price = object.getString("id");
+                new_price = object.getInt("id");
                 image = object.getString("thumb");
+                old_price = object.getString("old_price");
+                content = object.getString("content");
+                status = object.getString("status");
+                contact_spBanChays.add(new Contact_SPBanChay(new_price,old_price,content,image,name,status));
 
-                contact_heThongLocNuocs.add(new Contact_HeThongLocNuoc(price, image, name));
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1, RecyclerView.HORIZONTAL, false);
-        adapter_heThongLocNuoc = new Adapter_HeThongLocNuoc(contact_heThongLocNuocs, getContext());
+        adapter_spBanChay = new Adapter_SPBanChay(contact_spBanChays, getContext());
         binding.RcSPLocNuoc.setLayoutManager(layoutManager);
-        binding.RcSPLocNuoc.setAdapter(adapter_heThongLocNuoc);
+        binding.RcSPLocNuoc.setAdapter(adapter_spBanChay);
+
+        adapter_spBanChay.setIonClickWaterPurifier(new IonClickWaterPurifier() {
+            @Override
+            public void onClickItem(Contact_SPBanChay contact_spBanChay) {
+                Fragment fragment = ItemSPBanChay.newInstance(contact_spBanChay,contact_spBanChays);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+
+
     }
     private void DoGetData_MayLocNuoc() {
 
-        contac_mayLocNuocs = new ArrayList<>();
-        String name, price, image;
+        contact_spBanChays = new ArrayList<>();
+        String name, image, old_price, content, status;
+        int new_price;
+
 
         try {
             JSONArray jsonArray = new JSONArray(result1);
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
                 name = object.getString("publisher_id");
-                price = object.getString("id");
+                new_price = object.getInt("id");
                 image = object.getString("thumb");
+                old_price = object.getString("old_price");
+                content = object.getString("content");
+                status = object.getString("status");
+                contact_spBanChays.add(new Contact_SPBanChay(new_price, old_price, content, image, name, status));
 
-                contac_mayLocNuocs.add(new Contac_MayLocNuoc(price, image, name));
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1, RecyclerView.HORIZONTAL, false);
-        adapter_mayLocNuoc = new Adapter_MayLocNuoc(contac_mayLocNuocs, getContext());
+        adapter_spBanChay = new Adapter_SPBanChay(contact_spBanChays, getContext());
         binding.RcMayLocNuoc.setLayoutManager(layoutManager);
-        binding.RcMayLocNuoc.setAdapter(adapter_mayLocNuoc);
+        binding.RcMayLocNuoc.setAdapter(adapter_spBanChay);
+
+        adapter_spBanChay.setIonClickWaterPurifier(new IonClickWaterPurifier() {
+            @Override
+            public void onClickItem(Contact_SPBanChay contact_spBanChay) {
+                Fragment fragment = ItemSPBanChay.newInstance(contact_spBanChay, contact_spBanChays);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
+
     }
 
-}
+    }
 
