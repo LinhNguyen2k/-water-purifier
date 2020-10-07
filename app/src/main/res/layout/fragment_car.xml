@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.cart.CartFragment">
     <RelativeLayout
-        android:background="#CFEDB5"
+        android:background="#FFFFFF"
         android:id="@+id/all"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,8 +40,9 @@
             android:layout_below="@+id/image_back"
             android:id="@+id/RC_list_sp_car"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_180sdp"/>
+            android:layout_height="@dimen/_370sdp"/>
         <RelativeLayout
+
             android:id="@+id/layout_mid"
             android:layout_below="@+id/RC_list_sp_car"
             android:layout_marginTop="@dimen/_5sdp"

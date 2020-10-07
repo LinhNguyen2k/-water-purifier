@@ -35,11 +35,11 @@
         android:label="@string/menu_sanPham"
         tools:layout="@layout/fragment_product" />
 
-    <fragment
-        android:id="@+id/nav_introduce"
-        android:name="com.example.waterpurifier.ui.Introduce.IntroduceFragment"
-        android:label="@string/menu_gioiThieu"
-        tools:layout="@layout/fragment_introduce" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_introduce"-->
+<!--        android:name="com.example.waterpurifier.ui.Introduce.IntroduceFragment"-->
+<!--        android:label="@string/menu_gioiThieu"-->
+<!--        tools:layout="@layout/fragment_introduce" />-->
 <!--    <fragment-->
 <!--        android:id="@+id/nav_contact"-->
 <!--        android:name="com.example.waterpurifier.ui.contact.ContactFragment"-->
@@ -65,9 +65,9 @@
         android:name="com.example.waterpurifier.ui.cart.CartFragment"
         android:label="@string/menu_khuyenMai"
         tools:layout="@layout/fragment_car" />
-    <fragment
-        android:id="@+id/nav_pay"
-        android:name="com.example.waterpurifier.ui.payment.PaymentFragment"
-        android:label="@string/menu_PTthanhToan"
-        tools:layout="@layout/fragemnt_payment" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_pay"-->
+<!--        android:name="com.example.waterpurifier.ui.payment.PaymentFragment"-->
+<!--        android:label="@string/menu_PTthanhToan"-->
+<!--        tools:layout="@layout/fragemnt_payment" />-->
 </navigation>

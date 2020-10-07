@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 <LinearLayout
+    android:background="#ffffff"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -25,7 +27,7 @@
             android:layout_weight="2"
             android:backgroundTint="#67049C"
             android:src="@drawable/android_search"
-            android:tint="#777777" />
+            app:tint="#777777" />
         <EditText
             android:id="@+id/searchView"
             android:layout_width="@dimen/_170sdp"
@@ -41,19 +43,9 @@
             <requestFocus />
         </EditText>
     </LinearLayout>
+
     <TextView
-        android:textColor="#3466aa"
-        android:textStyle="bold"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:text="Sản Phẩm Bán Chạy"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_margin="@dimen/_10sdp"
-        android:id="@+id/RC_product_spBanChay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <TextView
+        android:layout_marginTop="@dimen/_5sdp"
         android:textColor="#3466aa"
         android:textStyle="bold"
         android:layout_marginLeft="@dimen/_5sdp"

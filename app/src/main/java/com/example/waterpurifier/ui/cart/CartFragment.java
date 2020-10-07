@@ -95,14 +95,14 @@ public class CartFragment extends Fragment {
                 builder.setMessage("Bạn Thực Sự Muốn Xóa Sản Phẩm Này ?");
                 builder.setIcon(R.drawable.delete_product);
                 // Cài đặt button Cancel- Hiển thị Toast
-                builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Hủy Bỏ", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Hủy Bỏ", Toast.LENGTH_SHORT).show();
                         dialog.cancel();
                     }
                 });
                 // Cài đặt button Yes Dismiss ẩn Dialog
-                builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Đồng Ý", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         boolean check = sql_helper.deleteItemInCart(contact_spBanChay.getName_product());
                         listcar = sql_helper.getallProduct();
@@ -112,101 +112,101 @@ public class CartFragment extends Fragment {
                         binding.RCListSpCar.setLayoutManager(layoutManager);
                         set_Car();
 
-                        adapter_custom_car.seticonLongClick(new IconLongClick() {
-                            @Override
-                            public void onClickButton(final Contact_SPBanChay contact_spBanChay) {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                //Cài đặt các thuộc tính
-                                builder.setTitle("Xác nhận !");
-                                builder.setMessage("Bạn Thực Sự Muốn Xóa Sản Phẩm Này ?");
-                                builder.setIcon(R.drawable.icon_phone);
-                                // Cài đặt button Cancel- Hiển thị Toast
-                                builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
-                                        dialog.cancel();
-                                    }
-                                });
+//                        adapter_custom_car.seticonLongClick(new IconLongClick() {
+//                            @Override
+//                            public void onClickButton(final Contact_SPBanChay contact_spBanChay) {
+//                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                                //Cài đặt các thuộc tính
+//                                builder.setTitle("Xác nhận !");
+//                                builder.setMessage("Bạn Thực Sự Muốn Xóa Sản Phẩm Này ?");
+//                                builder.setIcon(R.drawable.icon_phone);
+//                                // Cài đặt button Cancel- Hiển thị Toast
+//                                builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
+//                                        dialog.cancel();
+                               //    }
+                              //  });
                                 // Cài đặt button Yes Dismiss ẩn Dialog
-                                builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        boolean check = sql_helper.deleteItemInCart(contact_spBanChay.getName_product());
-                                        listcar = sql_helper.getallProduct();
-                                        Adapter_list_car adapter_custom_car = new Adapter_list_car(listcar, getContext());
-                                        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
-                                        binding.RCListSpCar.setAdapter(adapter_custom_car);
-                                        binding.RCListSpCar.setLayoutManager(layoutManager);
-                                        set_Car();
-
-                                        adapter_custom_car.seticonLongClick(new IconLongClick() {
-                                            @Override
-                                            public void onClickButton(final Contact_SPBanChay contact_spBanChay) {
-                                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                                //Cài đặt các thuộc tính
-                                                builder.setTitle("Xác nhận !");
-                                                builder.setMessage("Bạn Thực Sự Muốn Xóa Sản Phẩm Này ?");
-                                                builder.setIcon(R.drawable.icon_phone);
-                                                // Cài đặt button Cancel- Hiển thị Toast
-                                                builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog, int which) {
-                                                        Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
-                                                        dialog.cancel();
-                                                    }
-                                                });
-                                                // Cài đặt button Yes Dismiss ẩn Dialog
-                                                builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog, int which) {
-                                                        boolean check = sql_helper.deleteItemInCart(contact_spBanChay.getName_product());
-                                                        listcar = sql_helper.getallProduct();
-                                                        Adapter_list_car adapter_custom_car = new Adapter_list_car(listcar, getContext());
-                                                        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
-                                                        binding.RCListSpCar.setAdapter(adapter_custom_car);
-                                                        binding.RCListSpCar.setLayoutManager(layoutManager);
-                                                        set_Car();
-
-                                                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                                        //Cài đặt các thuộc tính
-                                                        builder.setTitle("Xác nhận !");
-                                                        builder.setMessage("Bạn Thực Sự Muốn Xóa Sản Phẩm Này ?");
-                                                        builder.setIcon(R.drawable.icon_phone);
-                                                        // Cài đặt button Cancel- Hiển thị Toast
-                                                        builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-                                                            public void onClick(DialogInterface dialog, int which) {
-                                                                Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
-                                                                dialog.cancel();
-                                                            }
-                                                        });
-                                                        // Cài đặt button Yes Dismiss ẩn Dialog
-                                                        builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                                                            public void onClick(DialogInterface dialog, int which) {
-                                                                boolean check = sql_helper.deleteItemInCart(contact_spBanChay.getName_product());
-                                                                listcar = sql_helper.getallProduct();
-                                                                Adapter_list_car adapter_custom_car = new Adapter_list_car(listcar, getContext());
-                                                                RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
-                                                                binding.RCListSpCar.setAdapter(adapter_custom_car);
-                                                                binding.RCListSpCar.setLayoutManager(layoutManager);
-                                                                set_Car();
-
-                                                            }
-                                                        })
-                                                                .create();
-
-                                                        builder.show();
-                                                    }
-                                                })
-                                                        .create();
-
-                                                builder.show();
-                                            }
-                                        });
-                                    }
-                                })
-                                        .create();
-
-                                builder.show();
+//                                builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        boolean check = sql_helper.deleteItemInCart(contact_spBanChay.getName_product());
+//                                        listcar = sql_helper.getallProduct();
+//                                        Adapter_list_car adapter_custom_car = new Adapter_list_car(listcar, getContext());
+//                                        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
+//                                        binding.RCListSpCar.setAdapter(adapter_custom_car);
+//                                        binding.RCListSpCar.setLayoutManager(layoutManager);
+//                                        set_Car();
+//
+//                                        adapter_custom_car.seticonLongClick(new IconLongClick() {
+//                                            @Override
+//                                            public void onClickButton(final Contact_SPBanChay contact_spBanChay) {
+//                                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                                                //Cài đặt các thuộc tính
+//                                                builder.setTitle("Xác nhận !");
+//                                                builder.setMessage("Bạn Thực Sự Muốn Xóa Sản Phẩm Này ?");
+//                                                builder.setIcon(R.drawable.icon_phone);
+//                                                // Cài đặt button Cancel- Hiển thị Toast
+//                                                builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+//                                                    public void onClick(DialogInterface dialog, int which) {
+//                                                        Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
+//                                                        dialog.cancel();
+//                                                    }
+//                                                });
+//                                                // Cài đặt button Yes Dismiss ẩn Dialog
+//                                                builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+//                                                    public void onClick(DialogInterface dialog, int which) {
+//                                                        boolean check = sql_helper.deleteItemInCart(contact_spBanChay.getName_product());
+//                                                        listcar = sql_helper.getallProduct();
+//                                                        Adapter_list_car adapter_custom_car = new Adapter_list_car(listcar, getContext());
+//                                                        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
+//                                                        binding.RCListSpCar.setAdapter(adapter_custom_car);
+//                                                        binding.RCListSpCar.setLayoutManager(layoutManager);
+//                                                        set_Car();
+//
+//                                                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//                                                        //Cài đặt các thuộc tính
+//                                                        builder.setTitle("Xác nhận !");
+//                                                        builder.setMessage("Bạn Thực Sự Muốn Xóa Sản Phẩm Này ?");
+//                                                        builder.setIcon(R.drawable.icon_phone);
+//                                                        // Cài đặt button Cancel- Hiển thị Toast
+//                                                        builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+//                                                            public void onClick(DialogInterface dialog, int which) {
+//                                                                Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
+//                                                                dialog.cancel();
+//                                                            }
+//                                                        });
+//                                                        // Cài đặt button Yes Dismiss ẩn Dialog
+//                                                        builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+//                                                            public void onClick(DialogInterface dialog, int which) {
+//                                                                boolean check = sql_helper.deleteItemInCart(contact_spBanChay.getName_product());
+//                                                                listcar = sql_helper.getallProduct();
+//                                                                Adapter_list_car adapter_custom_car = new Adapter_list_car(listcar, getContext());
+//                                                                RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
+//                                                                binding.RCListSpCar.setAdapter(adapter_custom_car);
+//                                                                binding.RCListSpCar.setLayoutManager(layoutManager);
+//                                                                set_Car();
+//
+//                                                            }
+//                                                        })
+//                                                                .create();
+//
+//                                                        builder.show();
+//                                                    }
+//                                                })
+//                                                        .create();
+//
+//                                                builder.show();
+//                                            }
+//                                        });
+//                                    }
+//                                })
+//                                        .create();
+//
+//                                builder.show();
                             }
-                        });
-                    }
+                 //       });
+               //     }
                 })
                         .create();
 
@@ -315,6 +315,7 @@ public class CartFragment extends Fragment {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, listContactFragment).commit();
+                fragmentTransaction.addToBackStack(null);
 
             }
         });

@@ -31,8 +31,6 @@ import com.example.waterpurifier.ui.home.Adapter_SPBanChay;
 import com.example.waterpurifier.ui.home.Contact_SPBanChay;
 import com.example.waterpurifier.ui.home.IonClickWaterPurifier;
 import com.example.waterpurifier.ui.home.ItemSPBanChay;
-import com.example.waterpurifier.ui.news.NewsViewModel;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,8 +45,7 @@ public class ProductFragment  extends Fragment {
 
     List<Contact_SPBanChay> contact_spBanChays;
     String result1 = "";
-    String urlAPI = "https://demo8117695.mockable.io/list_SanPhamBanChayNhat";
-    String urlAPI_MayDG = "https://demo8117695.mockable.io/list_MayDienGiai";
+    String urlAPI = "https://demo8117695.mockable.io/cacSanPhamKhac";
 //    String urlAPI_HTLocNuoc = "https://demo8117695.mockable.io/list_HeThongLocnuoc";
 //    String urlAPI_MayLocNuoc = "https://demo8117695.mockable.io/list_MayLocNuoc";
 //    String urlAPI_LinhKien = "https://demo8117695.mockable.io/list_LinhKienMayLocNuoc";
@@ -59,19 +56,6 @@ public class ProductFragment  extends Fragment {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product, container, false);
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, urlAPI_MayDG, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                result1 = response.toString();
-                DoGetData_MayDG();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                binding.RCProductItem.setVisibility(View.INVISIBLE);
-            }
-        });
 
         RequestQueue requestQueue1 = Volley.newRequestQueue(getContext());
         StringRequest stringRequest1 = new StringRequest(Request.Method.GET, urlAPI, new Response.Listener<String>() {
@@ -83,11 +67,11 @@ public class ProductFragment  extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                binding.RCProductSpBanChay.setVisibility(View.INVISIBLE);
+                binding.RCProductItem.setVisibility(View.INVISIBLE);
             }
         });
         requestQueue1.add(stringRequest1);
-        requestQueue.add(stringRequest);
+
 
         binding.searchView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -111,47 +95,6 @@ public class ProductFragment  extends Fragment {
     }
 
 
-    private void DoGetData_MayDG() {
-
-
-        contact_spBanChays = new ArrayList<>();
-        String name, image, old_price, content, status;
-        int new_price;
-        try {
-            JSONArray jsonArray = new JSONArray(result1);
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject object = jsonArray.getJSONObject(i);
-                name = object.getString("publisher_id");
-                new_price = object.getInt("id");
-                image = object.getString("thumb");
-                old_price = object.getString("old_price");
-                content = object.getString("content");
-                status = object.getString("status");
-                contact_spBanChays.add(new Contact_SPBanChay(new_price, old_price, content, image, name, status));
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
-        adapter_spBanChay = new Adapter_SPBanChay(contact_spBanChays, getContext());
-        binding.RCProductSpBanChay.setLayoutManager(layoutManager);
-        binding.RCProductSpBanChay.setAdapter(adapter_spBanChay);
-
-        adapter_spBanChay.setIonClickWaterPurifier(new IonClickWaterPurifier() {
-            @Override
-            public void onClickItem(Contact_SPBanChay contact_spBanChay) {
-                Fragment fragment = ItemSPBanChay.newInstance(contact_spBanChay, contact_spBanChays);
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
-
-
-    }
 
     private void DoGetData_SpBanChay() {
 

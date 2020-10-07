@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -20,6 +23,8 @@ import com.example.waterpurifier.ui.cart.CartFragment;
 
 public class LoginFragemnt extends Fragment {
     FragmentLoginBinding binding;
+    Toolbar toolbar;
+    LinearLayout linearLayout;
     static  SQLite_Account sqLite_account1;
 
     public static LoginFragemnt newInstance() {
@@ -35,6 +40,7 @@ public class LoginFragemnt extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
+        SetToolBar();
         binding.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +56,7 @@ public class LoginFragemnt extends Fragment {
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.nav_host_fragment, listContactFragment).commit();
+                    GetToolBar();
 //                    Intent intent = new Intent(getContext(),MainActivity.class);
 //                    startActivity(intent);
 
@@ -71,22 +78,22 @@ public class LoginFragemnt extends Fragment {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.nav_host_fragment, listContactFragment).commit();
+                SetToolBar();
             }
         });
         return binding.getRoot();
     }
-
-    public void select_information()
-    {
-        sqLite_account1 = new SQLite_Account(getContext());
-        String name ="";
-        String phonenumber ="";
-        String addres ="";
-        String userName = binding.userName.getText().toString();
-        String password = binding.password.getText().toString();
-        if (sqLite_account1.chekUser(userName, password))
-        {
-
-        }
+    public void SetToolBar(){
+        toolbar = getActivity().findViewById(R.id.toolbar);
+        toolbar.setVisibility(View.GONE);
+        linearLayout = getActivity().findViewById(R.id.layout_top);
+        linearLayout.setVisibility(View.GONE);
     }
+    public void GetToolBar(){
+        toolbar = getActivity().findViewById(R.id.toolbar);
+        toolbar.setVisibility(View.VISIBLE);
+        linearLayout = getActivity().findViewById(R.id.layout_top);
+        linearLayout.setVisibility(View.VISIBLE);
+    }
+
 }

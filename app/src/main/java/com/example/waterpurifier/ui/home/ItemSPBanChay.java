@@ -74,6 +74,7 @@ public class ItemSPBanChay extends Fragment {
         });
 
 
+
         binding.addCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +95,19 @@ public class ItemSPBanChay extends Fragment {
         RecyclerView.LayoutManager layoutManager2 = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
         binding.RCmoreSPChay.setAdapter(adapter_spBanChay2);
         binding.RCmoreSPChay.setLayoutManager(layoutManager2);
+
+
+        adapter_spBanChay2.setIonClickWaterPurifier(new IonClickWaterPurifier() {
+            @Override
+            public void onClickItem(Contact_SPBanChay contact_spBanChay) {
+                Fragment fragment = ItemSPBanChay.newInstance(contact_spBanChay,contact_spBanChays);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         return binding.getRoot();
     }
 
