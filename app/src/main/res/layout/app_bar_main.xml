@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -25,44 +25,18 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/vanminh_water" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_timkiem"
-                android:text="@string/TiengViet"
-                android:textColor="#FFFFFF"
-                android:textSize="@dimen/_9sdp" />
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_timkiem2"
-                android:text="@string/TiengAnh"
-                android:textColor="#FFFFFF"
-                android:textSize="@dimen/_9sdp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center">
 
             <ImageView
+                android:layout_marginRight="@dimen/_50sdp"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/ic_shopping_cart_black_24dp" />
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 
@@ -78,50 +52,6 @@
             android:layout_height="@dimen/_27sdp"
             android:background="#2738A6"
             app:popupTheme="@style/AppTheme.PopupOverlay">
-
-<!--            <RelativeLayout-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_marginLeft="@dimen/_48sdp"-->
-<!--                android:layout_marginRight="@dimen/_5sdp"-->
-<!--                android:gravity="center"-->
-<!--                android:weightSum="10">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_alignParentRight="true"-->
-<!--                    android:background="@drawable/botron"-->
-<!--                    android:orientation="horizontal">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_marginTop="@dimen/_1sdp"-->
-<!--                        android:layout_width="@dimen/_10sdp"-->
-<!--                        android:layout_height="@dimen/_10sdp"-->
-<!--                        android:layout_weight="2"-->
-<!--                        android:backgroundTint="#67049C"-->
-<!--                        android:src="@drawable/android_search"-->
-<!--                        android:tint="#777777" />-->
-<!--                    <AutoCompleteTextView-->
-<!--                        android:focusable="false"-->
-<!--                        android:id="@+id/searchView"-->
-<!--                        android:layout_width="@dimen/_170sdp"-->
-<!--                        android:layout_height="@dimen/_15sdp"-->
-<!--                        android:layout_weight="6"-->
-<!--                        android:background="#fff"-->
-<!--                        android:hint="Tìm Kiếm Sản Phẩm..."-->
-<!--                        android:textSize="@dimen/_10sdp"-->
-<!--                        android:paddingLeft="0dp"-->
-<!--                        android:paddingTop="0dp"-->
-<!--                        android:textColor="#00796B"-->
-<!--                        android:textColorHint="#0534DF" >-->
-<!--                        <requestFocus />-->
-<!--                    </AutoCompleteTextView>-->
-<!--                </LinearLayout>-->
-
-<!--            </RelativeLayout>-->
-
-
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -131,6 +61,6 @@
         layout="@layout/content_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_73sdp" />
+        android:layout_below="@+id/toolbar" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

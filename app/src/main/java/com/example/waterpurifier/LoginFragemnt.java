@@ -25,7 +25,6 @@ public class LoginFragemnt extends Fragment {
     FragmentLoginBinding binding;
     Toolbar toolbar;
     LinearLayout linearLayout;
-    static  SQLite_Account sqLite_account1;
 
     public static LoginFragemnt newInstance() {
 
